@@ -19,6 +19,8 @@ public class Receita implements Serializable {
 	@NotNull
 	private String nome;
 
+	private Integer nota;
+
 	public Long getId() {
 		return id;
 	}
@@ -29,6 +31,14 @@ public class Receita implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Integer getNota() {
+		return nota;
+	}
+
+	public void setNota(Integer nota) {
+		this.nota = nota;
 	}
 
 }

@@ -12,7 +12,15 @@
 					<h:panelGrid columns="3">
 						<p:outputLabel for="nome" value="Nome:" />
 						<p:inputText id="nome" value="#{receitaController.filtro.nome}"
-							size="60" converter="argumentoString"/>
+							size="60" converter="argumentoString" />
+						<p:message for="nome" />
+
+						<p:outputLabel for="classificacao" value="Classificação:" />
+						<p:selectOneMenu id="classificacao"
+							value="#{receitaController.filtro.classificacao}">
+							<f:selectItems value="#{receitaController.classificacoes}"
+								var="c" itemValue="#{c}" itemLabel="#{c.descricao}" />
+						</p:selectOneMenu>
 						<p:message for="nome" />
 
 						<h:panelGroup />
@@ -22,7 +30,8 @@
 				</p:fieldset>
 				<p:spacer height="5" />
 				<p:fieldset legend="Resultado">
-					<p:dataTable value="#{receitaController.receitas}" var="r" emptyMessage="Nenhum registro encontrado.">
+					<p:dataTable value="#{receitaController.receitas}" var="r"
+						emptyMessage="Nenhum registro encontrado.">
 						<p:column headerText="Nome">
 							<h:outputText value="#{r.nome}" />
 						</p:column>
