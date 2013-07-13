@@ -2,11 +2,15 @@ package br.com.yanaga.jsfquerydsljpa.app.filtro;
 
 import java.io.Serializable;
 
+import br.com.yanaga.jsfquerydsljpa.app.QReceita;
+
+import com.mysema.query.BooleanBuilder;
+
 public class FiltroReceita implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String nome;
+	private ArgumentoString nome = EmptyArgumentoString.newInstance();
 
 	private FiltroReceita() {
 	}
@@ -15,11 +19,17 @@ public class FiltroReceita implements Serializable {
 		return new FiltroReceita();
 	}
 
-	public String getNome() {
+	public BooleanBuilder toPredicate() {
+		BooleanBuilder builder = new BooleanBuilder();
+		nome.append(builder, QReceita.receita.nome);
+		return builder;
+	}
+
+	public ArgumentoString getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(ArgumentoString nome) {
 		this.nome = nome;
 	}
 

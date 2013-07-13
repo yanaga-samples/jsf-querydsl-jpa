@@ -12,7 +12,7 @@
 					<h:panelGrid columns="3">
 						<p:outputLabel for="nome" value="Nome:" />
 						<p:inputText id="nome" value="#{receitaController.filtro.nome}"
-							size="60" />
+							size="60" converter="argumentoString"/>
 						<p:message for="nome" />
 
 						<h:panelGroup />

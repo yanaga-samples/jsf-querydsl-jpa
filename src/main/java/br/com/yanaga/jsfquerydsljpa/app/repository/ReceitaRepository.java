@@ -23,13 +23,7 @@ public class ReceitaRepository {
 	public List<Receita> filtrar(FiltroReceita filtro) {
 		JPQLQuery query = new JPAQuery(entityManager);
 		QReceita qReceita = QReceita.receita;
-		if (filtro.getNome() != null) {
-			return query.from(qReceita).where(qReceita.nome.containsIgnoreCase(filtro.getNome()))
-					.orderBy(qReceita.nome.asc()).list(qReceita);
-		}
-		else {
-			return query.from(qReceita).orderBy(qReceita.nome.asc()).list(qReceita);
-		}
+		return query.from(qReceita).where(filtro.toPredicate()).list(qReceita);
 	}
 
 }
