@@ -1,11 +1,16 @@
 package br.com.yanaga.jsfquerydsljpa.app;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 
 @Entity
 public class Receita implements Serializable {
@@ -20,6 +25,9 @@ public class Receita implements Serializable {
 	private String nome;
 
 	private Integer nota;
+
+	@OneToMany(mappedBy = "receita")
+	private List<Tipo> tipos = Lists.newLinkedList();
 
 	public Long getId() {
 		return id;
@@ -39,6 +47,10 @@ public class Receita implements Serializable {
 
 	public void setNota(Integer nota) {
 		this.nota = nota;
+	}
+
+	public List<Tipo> getTipos() {
+		return ImmutableList.copyOf(tipos);
 	}
 
 }

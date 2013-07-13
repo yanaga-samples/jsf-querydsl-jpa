@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import br.com.yanaga.jsfquerydsljpa.app.QReceita;
+import br.com.yanaga.jsfquerydsljpa.app.QTipo;
 import br.com.yanaga.jsfquerydsljpa.app.Receita;
 import br.com.yanaga.jsfquerydsljpa.app.filtro.FiltroReceita;
 
@@ -23,7 +24,9 @@ public class ReceitaRepository {
 	public List<Receita> filtrar(FiltroReceita filtro) {
 		JPQLQuery query = new JPAQuery(entityManager);
 		QReceita qReceita = QReceita.receita;
-		return query.from(qReceita).where(filtro.toPredicate()).list(qReceita);
+		QTipo qTipo = QTipo.tipo;
+		return query.from(qReceita).leftJoin(qReceita.tipos, qTipo).fetch().where(filtro.toPredicate())
+				.listDistinct(qReceita);
 	}
 
 }

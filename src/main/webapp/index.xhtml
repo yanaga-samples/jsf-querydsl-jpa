@@ -35,6 +35,9 @@
 						<p:column headerText="Nome">
 							<h:outputText value="#{r.nome}" />
 						</p:column>
+						<p:column headerText="N.o de Tipos">
+							<h:outputText value="#{r.tipos.size()}" />
+						</p:column>
 					</p:dataTable>
 				</p:fieldset>
 			</p:panel>
