@@ -1,11 +1,11 @@
 package br.com.yanaga.jsfquerydsljpa.configuration.root.database;
 
-import javax.sql.DataSource;
-
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+
+import javax.sql.DataSource;
 
 @Configuration
 public class DesenvolvimentoDatabaseConfig implements DatabaseConfig {
@@ -24,7 +24,7 @@ public class DesenvolvimentoDatabaseConfig implements DatabaseConfig {
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/jsfquerydsljpa");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/demo");
 		dataSource.setUsername("demo");
 		dataSource.setPassword("demo");
 		dataSource.setTestOnBorrow(true);

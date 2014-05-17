@@ -1,7 +1,6 @@
 package br.com.yanaga.jsfquerydsljpa.configuration.root;
 
-import javax.persistence.EntityManagerFactory;
-
+import br.com.yanaga.jsfquerydsljpa.app.App;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,10 +9,10 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import br.com.yanaga.jsfquerydsljpa.app.Receita;
+import javax.persistence.EntityManagerFactory;
 
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = { Receita.class, AppConfig.class })
+@ComponentScan(basePackageClasses = { App.class, AppConfig.class })
 @Configuration
 public class AppConfig {
 
