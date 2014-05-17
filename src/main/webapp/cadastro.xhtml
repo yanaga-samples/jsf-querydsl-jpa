@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/blank.xhtml">
+	<ui:define name="body">
+		<h:form>
+			<p:panel header="Cadastro">
+				<p:fieldset>
+					<h:panelGrid columns="3">
+                        <p:outputLabel for="nome" value="Nome:"/>
+                        <p:inputText id="nome" value="#{pessoaController.pessoa.nome}" required="true" requiredMessage="Nome é obrigatório"/>
+                        <p:message for="nome"/>
+
+						<h:panelGroup />
+						<p:commandButton styleClass="ui-priority-primary" value="Salvar" action="#{pessoaController.salvar()}"
+							update="@form" />
+					</h:panelGrid>
+				</p:fieldset>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

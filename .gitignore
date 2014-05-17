@@ -15,3 +15,5 @@ logs
 *.tmp
 /gen
 /dependency-reduced-pom.xml
+/.idea
+*.iml

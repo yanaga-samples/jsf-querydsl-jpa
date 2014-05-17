@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/blank.xhtml">
+    <ui:define name="body">
+        <h:form>
+            <p:panel header="Consulta">
+                <p:fieldset legend="Filtro">
+                    <h:panelGrid columns="3">
+                        <p:outputLabel for="nome" value="Nome:"/>
+                        <p:inputText id="nome" value="#{pessoaController.filtro.nome}"/>
+                        <p:message for="nome"/>
+
+                        <h:panelGroup/>
+                        <p:commandButton styleClass="ui-priority-primary" value="Filtrar"
+                                         update="@form"/>
+                    </h:panelGrid>
+                </p:fieldset>
+                <p:spacer height="5"/>
+                <p:fieldset legend="Resultado">
+                    <p:dataTable value="#{pessoaController.filtrar()}" var="p"
+                                 emptyMessage="Nenhum registro encontrado.">
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{p.nome}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p:fieldset>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>
